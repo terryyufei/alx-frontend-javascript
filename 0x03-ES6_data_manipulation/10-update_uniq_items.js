@@ -1,14 +1,9 @@
-export default function updateUniqueItems(map) {
-  const list = map;
+const updateUniqueItems = (map) => {
+  if (!(map instanceof Map)) throw new Error('Cannot process');
 
-  if (list instanceof Map) {
-    for (const [key, value] of list) {
-      if (value === 1) {
-        list.set(key, 100);
-      }
-    }
-  } else {
-    throw new Error('Cannot process');
-  }
-  return list;
-}
+  map.forEach((value, key) => {
+    if (value === 1) map.set(key, 100);
+  });
+};
+
+export default updateUniqueItems;
